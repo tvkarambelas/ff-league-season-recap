@@ -4,6 +4,8 @@ import PointsFor from './PointsFor';
 import PointsAgainst from './PointsAgainst';
 import AvgScore from './AvgScore';
 import AboveAvgPerc from './AboveAvgPerc';
+import Acquisitions from './Acquisitions';
+import Tier1Ownership from './Tier1Ownership';
 
 const leagueName = 'Demo League';
 const season = '2018';
@@ -222,6 +224,8 @@ function App() {
             <PointsAgainst teams={teams} />
             <AvgScore teams={teams} />
             <AboveAvgPerc teams={teams} />
+            <Acquisitions teams={teams} />
+            <Tier1Ownership teams={teams} />
           </div>
         </div>
       </main>
