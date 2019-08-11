@@ -2,6 +2,8 @@ import React from 'react';
 import Standings from './Standings';
 import PointsFor from './PointsFor';
 import PointsAgainst from './PointsAgainst';
+import AvgScore from './AvgScore';
+import AboveAvgPerc from './AboveAvgPerc';
 
 const leagueName = 'Demo League';
 const season = '2018';
@@ -218,6 +220,8 @@ function App() {
             <Standings teams={teams} />
             <PointsFor teams={teams} />
             <PointsAgainst teams={teams} />
+            <AvgScore teams={teams} />
+            <AboveAvgPerc teams={teams} />
           </div>
         </div>
       </main>
