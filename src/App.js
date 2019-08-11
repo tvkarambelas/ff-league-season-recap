@@ -1,6 +1,7 @@
 import React from 'react';
 import Standings from './Standings';
 import PointsFor from './PointsFor';
+import PointsAgainst from './PointsAgainst';
 
 const leagueName = 'Demo League';
 const season = '2018';
@@ -216,6 +217,7 @@ function App() {
 
             <Standings teams={teams} />
             <PointsFor teams={teams} />
+            <PointsAgainst teams={teams} />
           </div>
         </div>
       </main>
