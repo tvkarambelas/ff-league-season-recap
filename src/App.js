@@ -10,12 +10,13 @@ import Tier1Ownership from './Tier1Ownership';
 const leagueName = 'Demo League';
 const season = '2018';
 
-const teams = [
+const teamsData = [
   {
     id: 1,
     name: 'Team 1',
     color: '#a6cee3',
     place: 5,
+    placeSuffix: 'th',
     wins: 8,
     losses: 5,
     pointsFor: 1702.0,
@@ -35,6 +36,7 @@ const teams = [
     name: 'Team 2',
     color: '#1f78b4',
     place: 7,
+    placeSuffix: 'th',
     wins: 6,
     losses: 7,
     pointsFor: 1715.4,
@@ -54,6 +56,7 @@ const teams = [
     name: 'Team 3',
     color: '#b2df8a',
     place: 9,
+    placeSuffix: 'th',
     wins: 3,
     losses: 10,
     pointsFor: 1614.7,
@@ -73,6 +76,7 @@ const teams = [
     name: 'Team 4',
     color: '#33a02c',
     place: 8,
+    placeSuffix: 'th',
     wins: 6,
     losses: 7,
     pointsFor: 1513.1,
@@ -92,6 +96,7 @@ const teams = [
     name: 'Team 5',
     color: '#fb9a99',
     place: 2,
+    placeSuffix: 'nd',
     wins: 9,
     losses: 4,
     pointsFor: 1825.7,
@@ -111,6 +116,7 @@ const teams = [
     name: 'Team 6',
     color: '#e31a1c',
     place: 1,
+    placeSuffix: 'st',
     wins: 9,
     losses: 4,
     pointsFor: 1731.4,
@@ -130,6 +136,7 @@ const teams = [
     name: 'Team 7',
     color: '#fdbf6f',
     place: 3,
+    placeSuffix: 'rd',
     wins: 9,
     losses: 4,
     pointsFor: 1706.9,
@@ -149,6 +156,7 @@ const teams = [
     name: 'Team 8',
     color: '#ff7f00',
     place: 6,
+    placeSuffix: 'th',
     wins: 6,
     losses: 7,
     pointsFor: 1740.5,
@@ -168,6 +176,7 @@ const teams = [
     name: 'Team 9',
     color: '#cab2d6',
     place: 10,
+    placeSuffix: 'th',
     wins: 0,
     losses: 13,
     pointsFor: 1115.2,
@@ -187,6 +196,7 @@ const teams = [
     name: 'Team 10',
     color: '#6a3d9a',
     place: 4,
+    placeSuffix: 'th',
     wins: 9,
     losses: 4,
     pointsFor: 1688.6,
@@ -201,7 +211,25 @@ const teams = [
     tier1_DST: [],
     tier1_K: [12]
   }
-]
+];
+
+function compareTeamPlaces(a, b) {
+  const placeA = a.place;
+  const placeB = b.place;
+
+  let comparison = 0;
+  if (placeA > placeB) {
+    comparison = 1;
+  } else if (placeA < placeB) {
+    comparison = -1;
+  }
+  return comparison;
+}
+
+function sortTeams(arr) {
+  const teamsDataSorted = arr.concat();
+  return teamsDataSorted.sort(compareTeamPlaces);
+}
 
 function App() {
   return (
@@ -219,13 +247,13 @@ function App() {
           <div className="inner">
             <h1>{season} Season Recap</h1>
 
-            <Standings teams={teams} />
-            <PointsFor teams={teams} />
-            <PointsAgainst teams={teams} />
-            <AvgScore teams={teams} />
-            <AboveAvgPerc teams={teams} />
-            <Acquisitions teams={teams} />
-            <Tier1Ownership teams={teams} />
+            <Standings teams={sortTeams(teamsData)} />
+            <PointsFor teams={teamsData} />
+            <PointsAgainst teams={teamsData} />
+            <AvgScore teams={teamsData} />
+            <AboveAvgPerc teams={teamsData} />
+            <Acquisitions teams={teamsData} />
+            <Tier1Ownership teams={teamsData} />
           </div>
         </div>
       </main>

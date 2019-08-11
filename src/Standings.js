@@ -6,7 +6,7 @@ const Standings = ({teams}) => (
     <ol className="standings">
       {teams.map(team => (
         <li key={team.id}>
-          <span className="label">{team.place}</span> {team.name} ({team.wins}-{team.losses})
+          <span className="label">{team.place}<sup>{team.placeSuffix}</sup></span> {team.name} ({team.wins}-{team.losses})
         </li>
       ))}
     </ol>
