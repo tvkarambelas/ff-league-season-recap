@@ -45,14 +45,6 @@ header {
   }
 }
 
-.top {
-
-  #logo {
-    max-width: 175px;
-    margin-bottom: 0.5rem;
-  }
-}
-
 .site-title {
   font-family: 'Fjalla One', sans-serif;
   font-size: 2.25rem;
@@ -94,39 +86,6 @@ header.row {
   }
 }
 
-#main-nav {
-  padding: 0.25rem 0;
-
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-
-    li {
-      display: inline-block;
-
-      a {
-        text-align: center;
-        text-decoration: none;
-        margin: 0 1rem;
-
-        &.active {
-          padding-bottom: 0.25rem;
-          border-bottom: 3px solid $teal;
-        }
-      }
-
-      &:first-child a {
-        margin-left: 0;
-      }
-
-      &:last-child a {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
 @media all and (min-width: 768px) {
   .cols-2 {
     display: flex;
@@ -142,18 +101,26 @@ ol.standings {
   list-style: none;
   padding-left: 0;
   column-count: 2;
-}
 
-.first svg {
-  color: gold;
-}
+  li svg {
+    display: none;
+    margin-right: 0.5rem;
+  }
 
-.second svg {
-  color: silver;
-}
+  li[data-place="1"] svg {
+    display: inline-block;
+    color: gold;
+  }
 
-.third svg {
-  color: #CD7F32;
+  li[data-place="2"] svg {
+    display: inline-block;
+    color: silver;
+  }
+
+  li[data-place="3"] svg {
+    display: inline-block;
+    color: #CD7F32;
+  }
 }
 
 table.styled {
