@@ -3,10 +3,6 @@ import Standings from './Standings';
 import PointsFor from './PointsFor';
 import PointsAgainst from './PointsAgainst';
 import PointsPossible from './PointsPossible';
-import AvgScore from './AvgScore';
-import AboveAvgPerc from './AboveAvgPerc';
-import Acquisitions from './Acquisitions';
-import Tier1Ownership from './Tier1Ownership';
 
 const leagueName = 'Demo League';
 const season = '2018';
@@ -22,16 +18,7 @@ const teamsData = [
     losses: 5,
     pointsFor: 1702.0,
     pointsAgainst: 1631.4,
-    pointsPossible: 1802,
-    avgScore: 131.0,
-    acquisitions: 40,
-    aboveAvgPerc: 54,
-    tier1_QB: [8],
-    tier1_RB: [],
-    tier1_WR: [3,4,11],
-    tier1_TE: [3,11],
-    tier1_DST: [1],
-    tier1_K: [5]
+    pointsPossible: 1802
   },
   {
     id: 2,
@@ -43,16 +30,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1715.4,
     pointsAgainst: 1654.1,
-    pointsPossible: 1800.1,
-    avgScore: 132.0,
-    acquisitions: 5,
-    aboveAvgPerc: 62,
-    tier1_QB: [3],
-    tier1_RB: [3],
-    tier1_WR: [1],
-    tier1_TE: [],
-    tier1_DST: [4],
-    tier1_K: []
+    pointsPossible: 1800.1
   },
   {
     id: 3,
@@ -64,16 +42,7 @@ const teamsData = [
     losses: 10,
     pointsFor: 1614.7,
     pointsAgainst: 1746.7,
-    pointsPossible: 1800.2,
-    avgScore: 124.2,
-    acquisitions: 5,
-    aboveAvgPerc: 54,
-    tier1_QB: [11,12],
-    tier1_RB: [1],
-    tier1_WR: [9],
-    tier1_TE: [7],
-    tier1_DST: [10],
-    tier1_K: 0
+    pointsPossible: 1800.2
   },
   {
     id: 4,
@@ -85,16 +54,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1513.1,
     pointsAgainst: 1610.4,
-    pointsPossible: 1800.3,
-    avgScore: 116.4,
-    acquisitions: 17,
-    aboveAvgPerc: 38,
-    tier1_QB: [2,7],
-    tier1_RB: [9],
-    tier1_WR: [8],
-    tier1_TE: [],
-    tier1_DST: [7,8,12],
-    tier1_K: [4,10]
+    pointsPossible: 1800.3
   },
   {
     id: 5,
@@ -106,16 +66,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1825.7,
     pointsAgainst: 1553.6,
-    pointsPossible: 1800.4,
-    avgScore: 140.4,
-    acquisitions: 18,
-    aboveAvgPerc: 69,
-    tier1_QB: [5,9],
-    tier1_RB: [10,11],
-    tier1_WR: [5,12],
-    tier1_TE: [2],
-    tier1_DST: [6,9],
-    tier1_K: [2]
+    pointsPossible: 1800.4
   },
   {
     id: 6,
@@ -127,16 +78,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1731.4,
     pointsAgainst: 1522.3,
-    pointsPossible: 1800.5,
-    avgScore: 133.2,
-    acquisitions: 4,
-    aboveAvgPerc: 77,
-    tier1_QB: [1],
-    tier1_RB: [4],
-    tier1_WR: [10],
-    tier1_TE: [5],
-    tier1_DST: [3],
-    tier1_K: []
+    pointsPossible: 1800.5
   },
   {
     id: 7,
@@ -148,16 +90,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1706.9,
     pointsAgainst: 1578.5,
-    pointsPossible: 1800.6,
-    avgScore: 131.3,
-    acquisitions: 12,
-    aboveAvgPerc: 62,
-    tier1_QB: [6],
-    tier1_RB: [6,8],
-    tier1_WR: [2],
-    tier1_TE: [8,12],
-    tier1_DST: [5,11],
-    tier1_K: []
+    pointsPossible: 1800.6
   },
   {
     id: 8,
@@ -169,16 +102,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1740.5,
     pointsAgainst: 1773.4,
-    pointsPossible: 1800.7,
-    avgScore: 133.9,
-    acquisitions: 5,
-    aboveAvgPerc: 62,
-    tier1_QB: [],
-    tier1_RB: [5],
-    tier1_WR: [6],
-    tier1_TE: [1,6],
-    tier1_DST: [],
-    tier1_K: [6,8]
+    pointsPossible: 1800.7
   },
   {
     id: 9,
@@ -190,16 +114,7 @@ const teamsData = [
     losses: 13,
     pointsFor: 1115.2,
     pointsAgainst: 1835.7,
-    pointsPossible: 1800.8,
-    avgScore: 85.8,
-    acquisitions: 2,
-    aboveAvgPerc: 8,
-    tier1_QB: [10],
-    tier1_RB: [],
-    tier1_WR: [],
-    tier1_TE: [10],
-    tier1_DST: [2],
-    tier1_K: [7]
+    pointsPossible: 1800.8
   },
   {
     id: 10,
@@ -211,16 +126,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1688.6,
     pointsAgainst: 1447.3,
-    pointsPossible: 1800.9,
-    avgScore: 129.9,
-    acquisitions: 15,
-    aboveAvgPerc: 46,
-    tier1_QB: [4],
-    tier1_RB: [7,12],
-    tier1_WR: [7],
-    tier1_TE: [4],
-    tier1_DST: [],
-    tier1_K: [12]
+    pointsPossible: 1800.9
   }
 ];
 
@@ -262,10 +168,6 @@ function App() {
             <PointsFor teams={teamsData} />
             <PointsAgainst teams={teamsData} />
             <PointsPossible teams={teamsData} />
-            <AvgScore teams={teamsData} />
-            <AboveAvgPerc teams={teamsData} />
-            <Acquisitions teams={teamsData} />
-            <Tier1Ownership teams={teamsData} />
           </div>
         </div>
       </main>
