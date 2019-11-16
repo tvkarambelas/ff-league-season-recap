@@ -2,6 +2,7 @@ import React from 'react';
 import Standings from './Standings';
 import PointsFor from './PointsFor';
 import PointsAgainst from './PointsAgainst';
+import PointsPossible from './PointsPossible';
 import AvgScore from './AvgScore';
 import AboveAvgPerc from './AboveAvgPerc';
 import Acquisitions from './Acquisitions';
@@ -21,6 +22,7 @@ const teamsData = [
     losses: 5,
     pointsFor: 1702.0,
     pointsAgainst: 1631.4,
+    pointsPossible: 1802,
     avgScore: 131.0,
     acquisitions: 40,
     aboveAvgPerc: 54,
@@ -41,6 +43,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1715.4,
     pointsAgainst: 1654.1,
+    pointsPossible: 1800.1,
     avgScore: 132.0,
     acquisitions: 5,
     aboveAvgPerc: 62,
@@ -61,6 +64,7 @@ const teamsData = [
     losses: 10,
     pointsFor: 1614.7,
     pointsAgainst: 1746.7,
+    pointsPossible: 1800.2,
     avgScore: 124.2,
     acquisitions: 5,
     aboveAvgPerc: 54,
@@ -81,6 +85,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1513.1,
     pointsAgainst: 1610.4,
+    pointsPossible: 1800.3,
     avgScore: 116.4,
     acquisitions: 17,
     aboveAvgPerc: 38,
@@ -101,6 +106,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1825.7,
     pointsAgainst: 1553.6,
+    pointsPossible: 1800.4,
     avgScore: 140.4,
     acquisitions: 18,
     aboveAvgPerc: 69,
@@ -121,6 +127,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1731.4,
     pointsAgainst: 1522.3,
+    pointsPossible: 1800.5,
     avgScore: 133.2,
     acquisitions: 4,
     aboveAvgPerc: 77,
@@ -141,6 +148,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1706.9,
     pointsAgainst: 1578.5,
+    pointsPossible: 1800.6,
     avgScore: 131.3,
     acquisitions: 12,
     aboveAvgPerc: 62,
@@ -161,6 +169,7 @@ const teamsData = [
     losses: 7,
     pointsFor: 1740.5,
     pointsAgainst: 1773.4,
+    pointsPossible: 1800.7,
     avgScore: 133.9,
     acquisitions: 5,
     aboveAvgPerc: 62,
@@ -181,6 +190,7 @@ const teamsData = [
     losses: 13,
     pointsFor: 1115.2,
     pointsAgainst: 1835.7,
+    pointsPossible: 1800.8,
     avgScore: 85.8,
     acquisitions: 2,
     aboveAvgPerc: 8,
@@ -201,6 +211,7 @@ const teamsData = [
     losses: 4,
     pointsFor: 1688.6,
     pointsAgainst: 1447.3,
+    pointsPossible: 1800.9,
     avgScore: 129.9,
     acquisitions: 15,
     aboveAvgPerc: 46,
@@ -250,6 +261,7 @@ function App() {
             <Standings teams={sortTeams(teamsData)} />
             <PointsFor teams={teamsData} />
             <PointsAgainst teams={teamsData} />
+            <PointsPossible teams={teamsData} />
             <AvgScore teams={teamsData} />
             <AboveAvgPerc teams={teamsData} />
             <Acquisitions teams={teamsData} />
