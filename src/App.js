@@ -12,14 +12,16 @@ function SeasonRecap() {
     e.preventDefault();
     const apiBase = 'https://api.sleeper.app/v1/';
     
+    // get league data
     let leagueDataResp = await fetch(apiBase+'league/'+leagueID);
     const leagueDataJSON = await leagueDataResp.json();
 
+    // get rosters data
     let leagueRostersResp = await fetch(apiBase+'league/'+leagueID+'/rosters');
     const leagueRostersJSON = await leagueRostersResp.json();
 
+    // pull out data we want from rosters
     let ownersData = [];
-
     leagueRostersJSON.map(owner => (
       ownersData.push(
         {
@@ -34,7 +36,8 @@ function SeasonRecap() {
         }
       )
     ))
-
+    
+    // get additional user data that isn't provided in rosters endpoint
     for (var i = 0; i < ownersData.length; i++) {
       let ownerUserDataResp = await fetch(apiBase+'user/'+ownersData[i].ownerID);
       const ownerUserDataJSON = await ownerUserDataResp.json();
