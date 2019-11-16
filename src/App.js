@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 import Standings from './Standings';
-import PointsFor from './PointsFor';
-import PointsAgainst from './PointsAgainst';
-import PointsPossible from './PointsPossible';
 
 function SeasonRecap() {
   const [leagueID, setLeagueID] = useState('')
@@ -86,7 +83,11 @@ function SeasonRecap() {
             </form>
 
             {leagueData ? (
-              <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>
+              <>
+                <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>
+                
+                <Standings owners={leagueData.owners} />
+              </>
             ) : (
               <div className="no-results">League not found.</div>
             )}
