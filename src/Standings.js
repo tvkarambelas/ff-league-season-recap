@@ -69,7 +69,7 @@ function Standings({owners}) {
   
   return (
     <>
-      <h2>Final Standings</h2>
+      <h2>Standings</h2>
       <ol className="standings">
         {ownersSorted.map((owner,idx) => (          
           <li data-place={idx+1} key={owner.ownerID}>
