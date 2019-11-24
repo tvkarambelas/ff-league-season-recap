@@ -87,7 +87,7 @@ function Standings({owners}) {
                 {idx+1 === 2 ? 'nd':''}
                 {idx+1 !== 1 && idx+1 !== 2 ? 'th':''}
               </sup>
-            </span> {owner.displayName} ({owner.wins}-{owner.losses}{owner.ties?'-'+owner.ties:''})
+            </span> <img src={'https://sleepercdn.com/avatars/thumbs/'+owner.avatar} alt="" class="avatar" /> {owner.displayName} ({owner.wins}-{owner.losses}{owner.ties?'-'+owner.ties:''})
           </li>
         ))}
       </ol>

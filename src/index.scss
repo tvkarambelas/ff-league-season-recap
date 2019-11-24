@@ -121,6 +121,11 @@ ol.standings {
     display: inline-block;
     color: #CD7F32;
   }
+
+  .avatar {
+    border-radius: 50%;
+    width: 2rem;
+  }
 }
 
 table.styled {
@@ -178,4 +183,13 @@ table.styled {
   display: block;
   font-size: 0.875rem;
   margin-top: 0.25rem;
+}
+
+#league-header {
+  display: flex;
+  align-items: center;
+
+  .avatar {
+    margin-right: 1rem;
+  }
 }

@@ -125,7 +125,13 @@ function SeasonRecap() {
 
             {leagueData ? (
               <>
-                <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>
+                <div id="league-header">
+                  {leagueData.avatar ? 
+                    <img src={'https://sleepercdn.com/avatars/thumbs/'+leagueData.avatar} alt="" class="avatar" />
+                    : ''
+                  }
+                  <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>
+                </div>
                 
                 <Standings owners={leagueData.owners} />
                 <PointsFor owners={leagueData.owners} />
