@@ -1,4 +1,4 @@
-#Sleeper FF League Season Recap
+# Sleeper FF League Season Recap
 
 A React tool to generate a visualized season recap for Sleeper fantasty football leagues.
 
