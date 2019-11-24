@@ -51,11 +51,15 @@ function SeasonRecap() {
     
     // get league data
     let leagueDataResp = await fetch(apiBase+'league/'+leagueID);
-    const leagueDataJSON = await leagueDataResp.json();
+    const leagueDataJSON = await leagueDataResp.json();    
 
     // get rosters data
     let leagueRostersResp = await fetch(apiBase+'league/'+leagueID+'/rosters');
     const leagueRostersJSON = await leagueRostersResp.json();
+
+    // get users data
+    let leagueUsersResp = await fetch(apiBase+'league/'+leagueID+'/users');
+    const leagueUsersJSON = await leagueUsersResp.json();
 
     // pull out data we want from rosters
     let ownersData = [];
@@ -74,15 +78,22 @@ function SeasonRecap() {
         }
       )
     ))
-    
+
     // get additional user data that isn't provided in rosters endpoint
     for (var i = 0; i < ownersData.length; i++) {
-      let ownerUserDataResp = await fetch(apiBase+'user/'+ownersData[i].ownerID);
-      const ownerUserDataJSON = await ownerUserDataResp.json();
+      const userID = ownersData[i].ownerID;
 
-      ownersData[i].avatar = ownerUserDataJSON.avatar;
-      ownersData[i].userName = ownerUserDataJSON.username;
-      ownersData[i].displayName = ownerUserDataJSON.display_name;
+      // search for corresponding owner
+      const newOwnerData = leagueUsersJSON.filter(obj => {
+        return obj.user_id === userID
+      })
+
+      const userName = newOwnerData[0].display_name;
+      const teamName = newOwnerData[0].metadata.team_name || userName;
+
+      ownersData[i].avatar = newOwnerData[0].avatar;
+      ownersData[i].userName = userName;
+      ownersData[i].teamName = teamName;
     }
 
     setLeagueData(
@@ -127,7 +138,7 @@ function SeasonRecap() {
               <>
                 <div id="league-header">
                   {leagueData.avatar ? 
-                    <img src={'https://sleepercdn.com/avatars/thumbs/'+leagueData.avatar} alt="" class="avatar" />
+                    <img src={'https://sleepercdn.com/avatars/thumbs/'+leagueData.avatar} alt="" className="avatar" />
                     : ''
                   }
                   <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>

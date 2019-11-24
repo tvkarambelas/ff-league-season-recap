@@ -8,7 +8,7 @@ function PointsPossible({owners}) {
     const ownerPPs = []
 
     for (var i = 0; i < owners.length; i++) {
-      ownerNames.push(owners[i].displayName)
+      ownerNames.push(owners[i].teamName)
       ownerColors.push(owners[i].color)
       ownerPPs.push(owners[i].pointsPossible)
     }

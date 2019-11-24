@@ -8,7 +8,7 @@ function PointsFor({owners}) {
     const ownerPFs = []
 
     for (var i = 0; i < owners.length; i++) {
-      ownerNames.push(owners[i].displayName)
+      ownerNames.push(owners[i].teamName)
       ownerColors.push(owners[i].color)
       ownerPFs.push(owners[i].pointsFor)
     }
