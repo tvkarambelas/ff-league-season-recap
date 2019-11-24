@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Standings from './Standings';
-import PointsFor from './PointsFor';
-import PointsPossible from './PointsPossible';
-import PointsAgainst from './PointsAgainst';
+import Standings from './components/Standings';
+import PointsFor from './components/PointsFor';
+import PointsPossible from './components/PointsPossible';
+import PointsAgainst from './components/PointsAgainst';
 
 function SeasonRecap() {
   const [leagueID, setLeagueID] = useState('')
