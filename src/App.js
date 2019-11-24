@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Standings from './Standings';
 import PointsFor from './PointsFor';
 import PointsPossible from './PointsPossible';
+import PointsAgainst from './PointsAgainst';
 
 function SeasonRecap() {
   const [leagueID, setLeagueID] = useState('')
@@ -129,6 +130,7 @@ function SeasonRecap() {
                 <Standings owners={leagueData.owners} />
                 <PointsFor owners={leagueData.owners} />
                 <PointsPossible owners={leagueData.owners} />
+                <PointsAgainst owners={leagueData.owners} />
               </>
             ) : (
               <div className="no-results">League not found.</div>
