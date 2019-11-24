@@ -3,7 +3,7 @@ import React from 'react';
 function Standings({owners}) {
   // utility functions
   var default_cmp = function(a, b) {
-    if (a == b) return 0;
+    if (a === b) return 0;
     return a < b ? -1 : 1;
   },
   getCmpFunc = function(primer) {
@@ -42,7 +42,7 @@ function Standings({owners}) {
     }
 
     return function(A, B) {
-      var a, b, name, cmp, result;
+      var name, cmp, result;
       for (var i = 0, l = n_fields; i < l; i++) {
         result = 0;
         field = fields[i];
@@ -56,7 +56,7 @@ function Standings({owners}) {
     }
   }
 
-  owners.sort(sortBy(
+  const ownersSorted = owners.slice(0).sort(sortBy(
     {
       name: 'wins',
       primer: parseInt
@@ -71,12 +71,11 @@ function Standings({owners}) {
     <>
       <h2>Final Standings</h2>
       <ol className="standings">
-        {owners.map((owner,idx) => (          
+        {ownersSorted.map((owner,idx) => (          
           <li data-place={idx+1} key={owner.ownerID}>
             {idx < 4 ?
               <>
                 <span className="fas fa-trophy"></span>
-                
               </>
               :
               ''
@@ -86,7 +85,7 @@ function Standings({owners}) {
               <sup>
                 {idx+1 === 1 ? 'st':''}
                 {idx+1 === 2 ? 'nd':''}
-                {idx+1 != 1 && idx+1 != 2 ? 'th':''}
+                {idx+1 !== 1 && idx+1 !== 2 ? 'th':''}
               </sup>
             </span> {owner.displayName} ({owner.wins}-{owner.losses}{owner.ties?'-'+owner.ties:''})
           </li>
