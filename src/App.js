@@ -51,7 +51,7 @@ function SeasonRecap() {
     
     // get league data
     let leagueDataResp = await fetch(apiBase+'league/'+leagueID);
-    const leagueDataJSON = await leagueDataResp.json();    
+    const leagueDataJSON = await leagueDataResp.json();
 
     // get rosters data
     let leagueRostersResp = await fetch(apiBase+'league/'+leagueID+'/rosters');
@@ -72,9 +72,9 @@ function SeasonRecap() {
           wins: owner.settings.wins,
           losses: owner.settings.losses,
           ties: owner.settings.ties,
-          pointsFor: owner.settings.fpts + owner.settings.fpts_decimal,
-          pointsAgainst: owner.settings.fpts_against + owner.settings.fpts_against_decimal,
-          pointsPossible: owner.settings.ppts + owner.settings.ppts_decimal
+          pointsFor: owner.settings.fpts + '.' + owner.settings.fpts_decimal,
+          pointsAgainst: owner.settings.fpts_against + '.' + owner.settings.fpts_against_decimal,
+          pointsPossible: owner.settings.ppts + '.' + owner.settings.ppts_decimal
         }
       )
     ))
