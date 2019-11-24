@@ -41,7 +41,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-##Roadmap
+## Roadmap
 - Adjust Standings component logic to calculate standings using playoffs data. The Standings component currently calculates standings based on number of wins then total points for.
 - Add Team Average Score component
 - Add FAAB Usage component
