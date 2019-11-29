@@ -4,6 +4,7 @@ import PointsFor from './components/PointsFor';
 import PointsPossible from './components/PointsPossible';
 import PointsAgainst from './components/PointsAgainst';
 import TeamAvgScore from './components/TeamAvgScore';
+import FAABUsed from './components/FAABUsed';
 
 function SeasonRecap() {
   const [leagueID, setLeagueID] = useState('')
@@ -81,7 +82,8 @@ function SeasonRecap() {
           ties: owner.settings.ties,
           pointsFor: owner.settings.fpts + '.' + owner.settings.fpts_decimal,
           pointsAgainst: owner.settings.fpts_against + '.' + owner.settings.fpts_against_decimal,
-          pointsPossible: owner.settings.ppts + '.' + owner.settings.ppts_decimal
+          pointsPossible: owner.settings.ppts + '.' + owner.settings.ppts_decimal,
+          waiverBudgetUsed: owner.settings.waiver_budget_used
         }
       )
     ))
@@ -110,6 +112,8 @@ function SeasonRecap() {
        'avatar':leagueDataJSON.avatar,
        'size':leagueDataJSON.total_rosters,
        'currentWeek':leagueDataJSON.settings.leg,
+       'waiverType':leagueDataJSON.settings.waiver_type,
+       'waiverBudget':leagueDataJSON.settings.waiver_budget,
        'owners': ownersData
       }
     );
@@ -157,6 +161,12 @@ function SeasonRecap() {
                 <PointsPossible owners={leagueData.owners} />
                 <PointsAgainst owners={leagueData.owners} />
                 <TeamAvgScore leagueData={leagueData} />
+                
+                {leagueData.waiverType === 2 ? 
+                  <FAABUsed leagueData={leagueData} />
+                  : ''
+                }
+
               </>
             ) : (
               <div className="no-results">League not found.</div>
