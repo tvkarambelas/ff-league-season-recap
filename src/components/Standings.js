@@ -138,7 +138,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#127808;</span>Best Luck</h3>
             <div className="desc">(least points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[0].avatar} alt="" className="avatar" /> {ownersSortedPA[0].teamName} ({ownersSortedPA[0].pointsFor} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[lastPos].avatar} alt="" className="avatar" /> {ownersSortedPA[lastPos].teamName} ({ownersSortedPA[lastPos].pointsFor} pts)
             </div>
           </div>  
 
@@ -146,7 +146,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#129301;</span>Worst Luck</h3>
             <div className="desc">(most points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[lastPos].avatar} alt="" className="avatar" /> {ownersSortedPA[lastPos].teamName} ({ownersSortedPA[lastPos].pointsFor} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[0].avatar} alt="" className="avatar" /> {ownersSortedPA[0].teamName} ({ownersSortedPA[0].pointsFor} pts)
             </div>
           </div> 
 
