@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Standings from './components/Standings';
 import PointsFor from './components/PointsFor';
 import PointsPossible from './components/PointsPossible';
+import PointsPossiblePerc from './components/PointsPossiblePerc';
 import PointsAgainst from './components/PointsAgainst';
 import TeamAvgScore from './components/TeamAvgScore';
 import FAABUsed from './components/FAABUsed';
@@ -80,10 +81,11 @@ function SeasonRecap() {
           wins: owner.settings.wins,
           losses: owner.settings.losses,
           ties: owner.settings.ties,
-          pointsFor: owner.settings.fpts + '.' + owner.settings.fpts_decimal,
-          pointsAgainst: owner.settings.fpts_against + '.' + owner.settings.fpts_against_decimal,
-          pointsPossible: owner.settings.ppts + '.' + owner.settings.ppts_decimal,
-          waiverBudgetUsed: owner.settings.waiver_budget_used
+          pointsFor: parseInt(owner.settings.fpts + '.' + owner.settings.fpts_decimal),
+          pointsAgainst: parseInt(owner.settings.fpts_against + '.' + owner.settings.fpts_against_decimal),
+          pointsPossible: parseInt(owner.settings.ppts + '.' + owner.settings.ppts_decimal),
+          waiverBudgetUsed: owner.settings.waiver_budget_used,
+          pointsPossiblePerc: ((parseInt(owner.settings.fpts + '.' + owner.settings.fpts_decimal) / parseInt(owner.settings.ppts + '.' + owner.settings.ppts_decimal) * 100).toFixed(2))
         }
       )
     ))
@@ -156,9 +158,10 @@ function SeasonRecap() {
                   <h1>{leagueData.name} - {leagueData.season} Season Recap</h1>
                 </div>
                 
-                <Standings owners={leagueData.owners} />
+                <Standings leagueData={leagueData} />
                 <PointsFor owners={leagueData.owners} />
                 <PointsPossible owners={leagueData.owners} />
+                <PointsPossiblePerc owners={leagueData.owners} />
                 <PointsAgainst owners={leagueData.owners} />
                 <TeamAvgScore leagueData={leagueData} />
                 

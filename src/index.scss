@@ -89,6 +89,7 @@ header.row {
 @media all and (min-width: 768px) {
   .cols-2 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   
     > div {
@@ -100,7 +101,6 @@ header.row {
 ol.standings {
   list-style: none;
   padding-left: 0;
-  column-count: 2;
 
   li svg {
     display: none;
@@ -122,9 +122,21 @@ ol.standings {
     color: #CD7F32;
   }
 
+  .owner-block {
+    .avatar {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.owner-block {
+  display: flex;
+  align-items: center;
+
   .avatar {
     border-radius: 50%;
     width: 2rem;
+    margin-right: 0.5rem;
   }
 }
 
@@ -175,8 +187,6 @@ table.styled {
       width: 70%;
     }
   }
-
-
 }
 
 .sm-label {
@@ -191,5 +201,19 @@ table.styled {
 
   .avatar {
     margin-right: 1rem;
+  }
+}
+
+#awards {
+  h3 {
+    span {
+      margin-right: 0.5rem;
+    }
+    
+    & + .desc {
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+      color: $gray;
+    }
   }
 }
