@@ -43,7 +43,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Roadmap
 - Adjust Standings component logic to calculate standings using playoffs data. The Standings component currently calculates standings based on number of wins then total points for.
-- Add Team Average Score component
 - Add FAAB Usage component
 - Figure out if there's a way to pull matchup specific scores so that % of Games with Above Avg Score component can be built
 - Add more colors to support up to 22 owners (Sleeper maximum)

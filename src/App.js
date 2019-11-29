@@ -3,6 +3,7 @@ import Standings from './components/Standings';
 import PointsFor from './components/PointsFor';
 import PointsPossible from './components/PointsPossible';
 import PointsAgainst from './components/PointsAgainst';
+import TeamAvgScore from './components/TeamAvgScore';
 
 function SeasonRecap() {
   const [leagueID, setLeagueID] = useState('')
@@ -53,13 +54,19 @@ function SeasonRecap() {
     let leagueDataResp = await fetch(apiBase+'league/'+leagueID);
     const leagueDataJSON = await leagueDataResp.json();
 
+    console.log(leagueDataJSON);
+
     // get rosters data
     let leagueRostersResp = await fetch(apiBase+'league/'+leagueID+'/rosters');
     const leagueRostersJSON = await leagueRostersResp.json();
 
+    console.log(leagueRostersJSON);
+
     // get users data
     let leagueUsersResp = await fetch(apiBase+'league/'+leagueID+'/users');
     const leagueUsersJSON = await leagueUsersResp.json();
+
+    console.log(leagueUsersJSON);
 
     // pull out data we want from rosters
     let ownersData = [];
@@ -102,6 +109,7 @@ function SeasonRecap() {
        'season':leagueDataJSON.season,
        'avatar':leagueDataJSON.avatar,
        'size':leagueDataJSON.total_rosters,
+       'currentWeek':leagueDataJSON.settings.leg,
        'owners': ownersData
       }
     );
@@ -148,6 +156,7 @@ function SeasonRecap() {
                 <PointsFor owners={leagueData.owners} />
                 <PointsPossible owners={leagueData.owners} />
                 <PointsAgainst owners={leagueData.owners} />
+                <TeamAvgScore leagueData={leagueData} />
               </>
             ) : (
               <div className="no-results">League not found.</div>
