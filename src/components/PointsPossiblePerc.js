@@ -28,7 +28,8 @@ function PointsPossiblePerc({owners}) {
           display: true,
           position: 'left'
         },
-        responsive: true
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
   }, [owners])  

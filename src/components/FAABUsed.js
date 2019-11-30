@@ -29,7 +29,8 @@ function FAABUsed({leagueData}) {
           display: true,
           position: 'left'
         },
-        responsive: true
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
   }, [leagueData])  
