@@ -260,3 +260,45 @@ table.styled {
     }
   }
 }
+
+.full-screen {
+  width: 100%;
+  height: 75vh;
+  background-color: $white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 4rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#loading {
+  .loader {
+    border: 2rem solid $tan;
+    border-radius: 50%;
+    border-top: 2rem solid $blue-dark;
+    width: 6rem;
+    height: 6rem;
+    animation: spin 0.75s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+#failed {
+  .emoji {
+    font-size: 5rem;
+  }
+}
+
+.highlight {
+  color: $gray;
+}
