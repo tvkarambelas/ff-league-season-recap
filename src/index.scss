@@ -217,3 +217,46 @@ table.styled {
     }
   }
 }
+
+.centered {
+  text-align: center;
+}
+
+#start-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 75vh;
+
+  > * {
+    width: 100%;
+  }
+
+  .row {
+    padding: 0;
+  }
+
+  form {
+    margin-top: 1rem;
+
+    input#leagueID {
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button#submit {
+      border: 0;
+      padding: 0.5rem 1rem;
+      background-color: $blue;
+      color: $white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: darken($blue,20%);
+      }
+    }
+  }
+}
