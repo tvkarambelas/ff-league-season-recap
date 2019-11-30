@@ -46,5 +46,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - Figure out if there's a way to pull matchup specific scores so that % of Games with Above Avg Score component can be built
 - Add more colors to support up to 22 owners (Sleeper maximum)
 - Figure out better styling for the Standings component
-- Add logic to remove charts that have been generated
-- Add logic to store previously searched leagueID
