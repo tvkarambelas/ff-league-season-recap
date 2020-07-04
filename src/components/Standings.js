@@ -3,6 +3,7 @@ import React from 'react';
 function Standings({leagueData}) {
   const owners = leagueData.owners
   const lastPos = leagueData.size-1
+  const avatarUrlBase = 'https://sleepercdn.com/avatars/thumbs/'
 
   const ownersSorted = owners.slice(0).sort(function(a, b){
     return a.place-b.place
@@ -60,14 +61,14 @@ function Standings({leagueData}) {
           <div>
             <h3><span role="img" aria-label="">&#128640;</span> Highest Scorer</h3>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPF.avatar} alt="" className="avatar" /> {highPF.teamName} ({highPF.pointsFor} pts)
+              <img src={avatarUrlBase+highPF.avatar} alt="" className="avatar" /> {highPF.teamName} ({highPF.pointsFor} pts)
             </div>
           </div>  
 
           <div>
             <h3><span role="img" aria-label="">&#128169;</span>Lowest Scorer</h3>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPF.avatar} alt="" className="avatar" /> {lowPF.teamName} ({lowPF.pointsFor} pts)
+              <img src={avatarUrlBase+lowPF.avatar} alt="" className="avatar" /> {lowPF.teamName} ({lowPF.pointsFor} pts)
             </div>
           </div>
 
@@ -75,7 +76,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#127808;</span>Best Luck</h3>
             <div className="desc">(least points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPA.avatar} alt="" className="avatar" /> {lowPA.teamName} ({lowPA.pointsAgainst} pts)
+              <img src={avatarUrlBase+lowPA.avatar} alt="" className="avatar" /> {lowPA.teamName} ({lowPA.pointsAgainst} pts)
             </div>
           </div>  
 
@@ -83,7 +84,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#129301;</span>Worst Luck</h3>
             <div className="desc">(most points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPA.avatar} alt="" className="avatar" /> {highPA.teamName} ({highPA.pointsAgainst} pts)
+              <img src={avatarUrlBase+highPA.avatar} alt="" className="avatar" /> {highPA.teamName} ({highPA.pointsAgainst} pts)
             </div>
           </div> 
 
@@ -91,7 +92,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#128293;</span>Best Manager</h3>
             <div className="desc">(highest percentage of possible points scored)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPPP.avatar} alt="" className="avatar" /> {highPPP.teamName} ({highPPP.pointsPossiblePerc}%)
+              <img src={avatarUrlBase+highPPP.avatar} alt="" className="avatar" /> {highPPP.teamName} ({highPPP.pointsPossiblePerc}%)
             </div>
           </div>
 
@@ -99,7 +100,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#129300;</span>Worst Manager</h3>
             <div className="desc">(lowest percentage of possible points scored)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPPP.avatar} alt="" className="avatar" /> {lowPPP.teamName} ({lowPPP.pointsPossiblePerc}%)
+              <img src={avatarUrlBase+lowPPP.avatar} alt="" className="avatar" /> {lowPPP.teamName} ({lowPPP.pointsPossiblePerc}%)
             </div>
           </div>
         </div>
