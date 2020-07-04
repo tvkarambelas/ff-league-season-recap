@@ -63,14 +63,69 @@ function SeasonRecap(props) {
     if (leagueDataJSON) {
       console.log(leagueDataJSON);
 
+      let standings = [];
+
+      // get winners bracket
+      let leagueWinnersResp = await fetch(apiBase+'league/'+leagueID+'/winners_bracket');
+      const leagueWinnersJSON = await leagueWinnersResp.json();
+      console.log('winners bracket');
+      console.log(leagueWinnersJSON);
+
+      // get losers bracket
+      let leagueLosersResp = await fetch(apiBase+'league/'+leagueID+'/losers_bracket');
+      const leagueLosersJSON = await leagueLosersResp.json();
+      console.log('losers bracket');
+      console.log(leagueLosersJSON);
+
+      leagueLosersJSON.filter(function(match) {
+        if (match.p) return match;
+      }).map((match,idx) => (
+        standings.push(
+          {
+            position: leagueDataJSON.total_rosters - match.p + 1,
+            rosterID: match.w
+          }
+        ),
+
+        standings.push(
+          {
+            position: leagueDataJSON.total_rosters - match.p,
+            rosterID: match.l
+          }
+        )
+      ))
+
+      leagueWinnersJSON.filter(function(match) {
+        if (match.p) return match;
+      }).map((match,idx) => (
+        standings.push(
+          {
+            position: match.p,
+            rosterID: match.w
+          }
+        ),
+
+        standings.push(
+          {
+            position: match.p + 1,
+            rosterID: match.l
+          }
+        )
+      ))
+
+      console.log('standings');
+      console.log(standings);
+
       // get rosters data
       let leagueRostersResp = await fetch(apiBase+'league/'+leagueID+'/rosters');
       const leagueRostersJSON = await leagueRostersResp.json();
+      console.log('league rosters');
       console.log(leagueRostersJSON);
 
       // get users data
       let leagueUsersResp = await fetch(apiBase+'league/'+leagueID+'/users');
       const leagueUsersJSON = await leagueUsersResp.json();
+      console.log('league users');
       console.log(leagueUsersJSON);
 
       // pull out data we want from rosters
@@ -102,12 +157,17 @@ function SeasonRecap(props) {
           return obj.user_id === userID
         })
 
+        const standingsData = standings.filter(obj => {
+          return obj.rosterID === ownersData[i].rosterID
+        })
+
         const userName = newOwnerData[0].display_name;
         const teamName = newOwnerData[0].metadata.team_name || userName;
 
         ownersData[i].avatar = newOwnerData[0].avatar;
         ownersData[i].userName = userName;
         ownersData[i].teamName = teamName;
+        ownersData[i].place = standingsData[0].position;
       }
 
       setLeagueData(

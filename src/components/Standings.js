@@ -4,92 +4,29 @@ function Standings({leagueData}) {
   const owners = leagueData.owners
   const lastPos = leagueData.size-1
 
-  // utility functions
-  const default_cmp = function(a, b) {
-    if (a === b) return 0;
-    return a < b ? -1 : 1;
-  },
-  getCmpFunc = function(primer) {
-    var cmp = default_cmp;
-    if (primer) {
-      cmp = function(a, b) {
-        return default_cmp(primer(a), primer(b));
-      };
-    }
+  const ownersSorted = owners.slice(0).sort(function(a, b){
+    return a.place-b.place
+  });
 
-    return function(a, b) {
-      return -1 * cmp(a, b);
-    };
-  };
+  const ownersSortedPF = owners.slice(0).sort(function(a, b){
+    return a.pointsFor-b.pointsFor
+  });
 
-  function sortBy() {
-    var fields = [],
-        n_fields = arguments.length,
-        field, name, cmp;
+  const ownersSortedPA = owners.slice(0).sort(function(a, b){
+    return a.pointsAgainst-b.pointsAgainst
+  });
 
-    // preprocess sorting options
-    for (var i = 0; i < n_fields; i++) {
-      field = arguments[i];
-      if (typeof field === 'string') {
-        name = field;
-        cmp = default_cmp;
-      }
-      else {
-        name = field.name;
-        cmp = getCmpFunc(field.primer);
-      }
-      fields.push({
-        name: name,
-        cmp: cmp
-      });
-    }
+  const ownersSortedPPP = owners.slice(0).sort(function(a, b){
+    return a.pointsPossiblePerc-b.pointsPossiblePerc
+  });
 
-    return function(A, B) {
-      var name, cmp, result;
-      for (var i = 0, l = n_fields; i < l; i++) {
-        result = 0;
-        field = fields[i];
-        name = field.name;
-        cmp = field.cmp;
-
-        result = cmp(A[name], B[name]);
-        if (result !== 0) break;
-      }
-      return result;
-    }
-  }
-
-  const ownersSorted = owners.slice(0).sort(sortBy(
-    {
-      name: 'wins',
-      primer: parseInt
-    },
-    {
-      name: 'pointsFor',
-      primer: parseInt
-    }
-  ));
-
-  const ownersSortedPF = owners.slice(0).sort(sortBy(
-    {
-      name: 'pointsFor',
-      primer: parseInt
-    }
-  ));
-
-  const ownersSortedPA = owners.slice(0).sort(sortBy(
-    {
-      name: 'pointsAgainst',
-      primer: parseInt
-    }
-  ));
-
-  const ownersSortedPPP = owners.slice(0).sort(sortBy(
-    {
-      name: 'pointsPossiblePerc',
-      primer: parseInt
-    }
-  ));
+  // awards
+  const highPF = ownersSortedPF[lastPos]
+  const lowPF = ownersSortedPF[0]
+  const highPA = ownersSortedPA[lastPos]
+  const lowPA = ownersSortedPA[0]
+  const highPPP = ownersSortedPPP[lastPos]
+  const lowPPP = ownersSortedPPP[0]
   
   return (
     <>
@@ -123,14 +60,14 @@ function Standings({leagueData}) {
           <div>
             <h3><span role="img" aria-label="">&#128640;</span> Highest Scorer</h3>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPF[0].avatar} alt="" className="avatar" /> {ownersSortedPF[0].teamName} ({ownersSortedPF[0].pointsFor} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPF.avatar} alt="" className="avatar" /> {highPF.teamName} ({highPF.pointsFor} pts)
             </div>
           </div>  
 
           <div>
             <h3><span role="img" aria-label="">&#128169;</span>Lowest Scorer</h3>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPF[lastPos].avatar} alt="" className="avatar" /> {ownersSortedPF[lastPos].teamName} ({ownersSortedPF[lastPos].pointsFor} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPF.avatar} alt="" className="avatar" /> {lowPF.teamName} ({lowPF.pointsFor} pts)
             </div>
           </div>
 
@@ -138,7 +75,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#127808;</span>Best Luck</h3>
             <div className="desc">(least points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[lastPos].avatar} alt="" className="avatar" /> {ownersSortedPA[lastPos].teamName} ({ownersSortedPA[lastPos].pointsAgainst} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPA.avatar} alt="" className="avatar" /> {lowPA.teamName} ({lowPA.pointsAgainst} pts)
             </div>
           </div>  
 
@@ -146,7 +83,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#129301;</span>Worst Luck</h3>
             <div className="desc">(most points against)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPA[0].avatar} alt="" className="avatar" /> {ownersSortedPA[0].teamName} ({ownersSortedPA[0].pointsAgainst} pts)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPA.avatar} alt="" className="avatar" /> {highPA.teamName} ({highPA.pointsAgainst} pts)
             </div>
           </div> 
 
@@ -154,7 +91,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#128293;</span>Best Manager</h3>
             <div className="desc">(highest percentage of possible points scored)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPPP[0].avatar} alt="" className="avatar" /> {ownersSortedPPP[0].teamName} ({ownersSortedPPP[0].pointsPossiblePerc}%)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+highPPP.avatar} alt="" className="avatar" /> {highPPP.teamName} ({highPPP.pointsPossiblePerc}%)
             </div>
           </div>
 
@@ -162,7 +99,7 @@ function Standings({leagueData}) {
             <h3><span role="img" aria-label="">&#129300;</span>Worst Manager</h3>
             <div className="desc">(lowest percentage of possible points scored)</div>
             <div className="owner-block">
-              <img src={'https://sleepercdn.com/avatars/thumbs/'+ownersSortedPPP[lastPos].avatar} alt="" className="avatar" /> {ownersSortedPPP[lastPos].teamName} ({ownersSortedPPP[lastPos].pointsPossiblePerc}%)
+              <img src={'https://sleepercdn.com/avatars/thumbs/'+lowPPP.avatar} alt="" className="avatar" /> {lowPPP.teamName} ({lowPPP.pointsPossiblePerc}%)
             </div>
           </div>
         </div>
